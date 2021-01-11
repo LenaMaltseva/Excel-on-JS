@@ -1,0 +1,85 @@
+@import "variables";
+@import "mixins";
+
+.db {
+  &__header {
+    @include flex-centered;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    height: $db-header-height;
+    box-shadow: 0 0 2px 0 $secondary-grey;
+    color: $app-color;
+  }
+
+  &__new {
+    margin-top: $db-header-height;
+    padding: 1.5rem;
+    background-color: $light-grey;
+  }
+
+  &__container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  &__create {
+    @include flex-centered;
+    width: 160px;
+    height: 160px;
+    background-color: $main-white;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    color: $text-secondary-color;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.1s;
+
+    &:hover {
+      border-color: $app-color;
+      color: $text-main-color;
+    }
+  }
+
+  &__table {
+    padding: 1rem;
+
+  }
+
+  &__list-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 0 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: $caption-main-color;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+
+    &:hover {
+      background-color: $light-grey;
+      border-radius: 4px;
+    }
+
+    & a {
+      font-size: 14px;
+      color: $text-main-color;
+      text-decoration: none;
+
+      &:hover {
+        color: $app-color;
+        text-decoration: underline;
+      }
+    }
+  }
+}
