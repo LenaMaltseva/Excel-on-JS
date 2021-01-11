@@ -1,0 +1,33 @@
+/* Colors */
+$main-black: #000;
+$main-white: #fff;
+$main-green: #00a964;
+$main-yellow: #e4c900;
+$main-red: #ff0045;
+
+$main-grey: #7d7d7d;
+$secondary-grey: #c0c0c0;
+$light-grey: #f4f6f7;
+
+/* UI elements */
+/* colors */
+$app-color: $main-green;
+$border-color: $secondary-grey;
+$text-main-color: $main-black;
+$text-secondary-color: $main-grey;
+$caption-main-color: $secondary-grey;
+
+$success-main-color: $main-green;
+$warning-main-color: $main-yellow;
+$error-main-color: $main-red;
+
+/* sizes */
+$db-header-height: 64px;
+
+$header-height: 44px;
+$toolbar-height: 44px;
+$formula-height: 32px;
+$row-height: 24px;
+
+$info-cell-width: 40px;
+$cell-width: 120px;

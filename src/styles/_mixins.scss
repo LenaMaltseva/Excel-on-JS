@@ -1,0 +1,44 @@
+@import "variables";
+
+@mixin flex-centered () {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button($color:$app-color) {
+  display: inline-block;
+  min-width: 28px;
+  height: 28px;
+  padding: 5px;
+  text-align: center;
+  color: $text-secondary-color;
+  cursor: pointer;
+
+  & i {
+    font-size: 18px;
+  }
+
+  &:active, &.active {
+    color: $color;
+  }
+
+  &:hover {
+    background-color: $light-grey;
+  }
+}
+
+@mixin cell() {
+  height: 100%;
+  border: 1px solid rgba($border-color, 0.5);
+  border-top: none;
+  border-left: none;
+  outline: none;
+}
+
+@mixin info-cell() {
+  @include flex-centered;
+  @include cell;
+  border-color: $border-color;
+  background-color: rgba($light-grey, 0.65);
+}
