@@ -10,6 +10,8 @@
     "semi": ["error", "never"],
     "arrow-parens": "off",
     "require-jsdoc": "off",
-    "no-console": "warn"
+    "no-console": "warn",
+    "object-curly-spacing": ["error", "always"],
+    "operator-linebreak": "off"
   }
 }
