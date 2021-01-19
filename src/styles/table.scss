@@ -16,6 +16,7 @@
 
     &__info {
       @include info-cell;
+      position: relative;
       min-width: $info-cell-width;
     }
 
@@ -24,6 +25,7 @@
 
       & .column {
         @include info-cell;
+        position: relative;
         width: $cell-width;
         min-width: 40px;
       }
@@ -41,6 +43,37 @@
           border: 1px solid $app-color;
           outline: 1px solid $app-color;
         }
+      }
+    }
+
+    & .row__resize,
+    & .column__resize {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      background-color: $warning-main-color;
+      opacity: 0;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    & .row__resize {
+      left: 0;
+      height: 4px;
+
+      &:hover {
+        cursor: row-resize;
+      }
+    }
+
+    & .column__resize {
+      top: 0;
+      width: 4px;
+
+      &:hover {
+        cursor: col-resize;
       }
     }
   }
