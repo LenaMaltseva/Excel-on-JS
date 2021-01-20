@@ -16,7 +16,9 @@
 
     &__info {
       @include info-cell;
+      position: relative;
       min-width: $info-cell-width;
+      user-select: none;
     }
 
     &__data {
@@ -24,8 +26,10 @@
 
       & .column {
         @include info-cell;
+        position: relative;
         width: $cell-width;
         min-width: 40px;
+        user-select: none;
       }
 
       & .cell {
@@ -41,6 +45,38 @@
           border: 1px solid $app-color;
           outline: 1px solid $app-color;
         }
+      }
+    }
+
+    & .row__resize,
+    & .column__resize {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: 100;
+      background-color: $warning-main-color;
+      opacity: 0;
+
+      &:hover {
+        opacity: 1 !important;
+      }
+    }
+
+    & .row__resize {
+      left: 0;
+      height: 4px;
+
+      &:hover {
+        cursor: row-resize;
+      }
+    }
+
+    & .column__resize {
+      top: 0;
+      width: 4px;
+
+      &:hover {
+        cursor: col-resize;
       }
     }
   }
