@@ -18,6 +18,7 @@
       @include info-cell;
       position: relative;
       min-width: $info-cell-width;
+      user-select: none;
     }
 
     &__data {
@@ -28,6 +29,7 @@
         position: relative;
         width: $cell-width;
         min-width: 40px;
+        user-select: none;
       }
 
       & .cell {
@@ -51,11 +53,12 @@
       position: absolute;
       right: 0;
       bottom: 0;
+      z-index: 100;
       background-color: $warning-main-color;
       opacity: 0;
 
       &:hover {
-        opacity: 1;
+        opacity: 1 !important;
       }
     }
 

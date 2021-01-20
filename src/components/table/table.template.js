@@ -23,21 +23,24 @@ function toChar(_, index) {
   return String.fromCharCode(CHAR_CODES.A + index)
 }
 
-function toColumn(content) {
-  return `<div class="column">
+function toColumn(content, index) {
+  return `<div class="column" data-type="resizable" data-column="${index}">
     ${content}
-    <div class='column__resize'></div>
+    <div class="column__resize" data-resize="column"></div>
   </div>`
 }
 
-function toCell(content) {
-  return `<div class="cell" contenteditable>${content}</div>`
+function toCell(_, index) {
+  return `<div class="cell" data-column="${index}" contenteditable></div>`
 }
 
 function createRow(content, index = '') {
-  const resizer = index ? `<div class='row__resize'></div>` : ''
+  const resizer = index
+    ? `<div class="row__resize" data-resize="row"></div>`
+    : ''
+
   return `
-    <div class='row'>
+    <div class="row" data-type="resizable">
       <div class="row__info">
         ${index}
         ${resizer}
