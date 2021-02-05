@@ -51,6 +51,7 @@ class Dom {
 
   focus() {
     this.$el.focus()
+    return this
   }
 
   closest(selector) {

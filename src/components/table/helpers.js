@@ -12,7 +12,7 @@ export function isMultiSelect(evt) {
   return evt.shiftKey
 }
 
-export function matrix($current, $target) {
+export function getMatrix($current, $target) {
   const current = $current.id(true)
   const target = $target.id(true)
 
@@ -23,4 +23,36 @@ export function matrix($current, $target) {
     rows.forEach(row => acc.push(`${row}:${col}`))
     return acc
   }, [])
+}
+
+export function isKeyBoardNav(evt) {
+  const keys = [
+    'ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'Enter', 'Tab',
+  ]
+  return keys.includes(evt.key)
+}
+
+export function getNextSelector(evt, { row, col }) {
+  const MIN_VALUE = 0
+  switch (evt.key) {
+    case 'ArrowLeft':
+      col = col - 1 < MIN_VALUE ? col : col - 1
+      break
+
+    case 'ArrowUp':
+      row = row - 1 < MIN_VALUE ? row : row - 1
+      break
+
+    case 'ArrowDown':
+    case 'Enter':
+      row++
+      break
+
+    case 'ArrowRight':
+    case 'Tab':
+      col++
+      break
+  }
+
+  return `[data-id="${row}:${col}"]`
 }

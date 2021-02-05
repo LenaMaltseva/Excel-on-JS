@@ -1,14 +1,16 @@
 import { $ } from '~core/Dom'
 import { ExcelComponent } from '~core/ExcelComponent'
-import { createTable } from '~/components/table/table.template'
+import { createTable } from './table.template'
 import {
   shouldResize,
   isCell,
   isMultiSelect,
-  matrix,
-} from '~/components/table/helpers'
-import { handleResize } from '~/components/table/table.resize'
-import { TableSelection } from '~/components/table/TableSelection'
+  getMatrix,
+  isKeyBoardNav,
+  getNextSelector,
+} from './helpers'
+import { handleResize } from './table.resize'
+import { TableSelection } from './TableSelection'
 
 export class Table extends ExcelComponent {
   static className = 'excel__table'
@@ -33,7 +35,6 @@ export class Table extends ExcelComponent {
 
     const $cell = this.$root.find('[data-id="0:0"]')
     this.selection.select($cell)
-    $cell.focus()
   }
 
   onMousedown(e) {
@@ -44,13 +45,24 @@ export class Table extends ExcelComponent {
 
       if (isMultiSelect(e)) {
         const $current = this.selection.current
-        const $cells = matrix($current, $target)
+        const $cells = getMatrix($current, $target)
             .map(id => this.$root.find(`[data-id="${id}"]`))
 
         this.selection.selectGroup($cells)
       } else {
         this.selection.select($target)
       }
+    }
+  }
+
+  onKeydown(e) {
+    if (isKeyBoardNav(e) && !e.shiftKey) {
+      e.preventDefault()
+
+      const currentId = $(e.target).id(true)
+      const $target = this.$root.find(getNextSelector(e, currentId))
+
+      this.selection.select($target)
     }
   }
 }
