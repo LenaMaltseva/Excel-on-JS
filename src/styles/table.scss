@@ -40,7 +40,8 @@
         color: $text-main-color;
         white-space: nowrap;
 
-        &:focus {
+        //&:focus,
+        &.selected {
           z-index: 2;
           border: 1px solid $app-color;
           outline: 1px solid $app-color;

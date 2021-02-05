@@ -33,6 +33,14 @@ class Dom {
     return this.$el.dataset
   }
 
+  id(parse) {
+    if (parse) {
+      const parsed = this.id().split(':')
+      return { row: +parsed[0], col: +parsed[1] }
+    }
+    return this.$el.dataset.id
+  }
+
   on(eventType, callback) {
     this.$el.addEventListener(eventType, callback)
   }
@@ -41,8 +49,16 @@ class Dom {
     this.$el.removeEventListener(eventType, callback)
   }
 
+  focus() {
+    this.$el.focus()
+  }
+
   closest(selector) {
     return $(this.$el.closest(selector))
+  }
+
+  find(selector) {
+    return $(this.$el.querySelector(selector))
   }
 
   findAll(selector) {
@@ -51,6 +67,14 @@ class Dom {
 
   getCoords() {
     return this.$el.getBoundingClientRect()
+  }
+
+  addClass(className) {
+    this.$el.classList.add(className)
+  }
+
+  removeClass(className) {
+    this.$el.classList.remove(className)
   }
 
   css(styles = {}) {
