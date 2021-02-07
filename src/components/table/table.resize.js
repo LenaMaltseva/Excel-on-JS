@@ -3,7 +3,7 @@ import { $ } from '~core/Dom'
 export function handleResize(e, $root) {
   const { resize } = e.target.dataset
   const $resizer = $(e.target)
-  const side = resize === 'row' ? 'bottom' : 'right'
+  const side = resize === 'row' ? 'right' : 'bottom'
   $resizer.css({ opacity: 1, [side]: '-5000px' })
 
   const $parent = $resizer.closest('[data-type="resizable"]')
@@ -20,6 +20,7 @@ export function handleResize(e, $root) {
     const deltaSize = mousePoint - parentParams.end
     newSize = parentParams.size + deltaSize
 
+    const side = resize === 'row' ? 'bottom' : 'right'
     $resizer.css({ [side]: -deltaSize + 'px' })
   }
 
