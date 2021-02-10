@@ -21,7 +21,7 @@ export function createTable(rowsCount = 10, state = {}) {
         .fill('')
         .map(toCell(row, state.colState))
         .join('')
-    rows.push(createRow(cells, row + 1))
+    rows.push(createRow(cells, row + 1, state.rowState))
   }
 
   return rows.join('')
@@ -34,9 +34,14 @@ function withWidthFrom(state) {
 }
 
 function getWidthStyle(state, index) {
-  if (!state) return ''
   return state[index] ? `style = "width: ${state[index]}px"` : ''
 }
+
+function getHeightStyle(state, index) {
+  if (!index) return ''
+  return state[index] ? `style = "height: ${state[index]}px"` : ''
+}
+
 
 function toChar(_, index) {
   return String.fromCharCode(CHAR_CODES.A + index)
@@ -67,15 +72,16 @@ function toCell(row, state) {
   }
 }
 
-function createRow(content, index = '') {
-  const resizer = index
+function createRow(content, row = '', state = {}) {
+  const style = getHeightStyle(state, row)
+  const resizer = row
     ? `<div class="row__resize" data-resize="row"></div>`
     : ''
 
   return `
-    <div class="row" data-type="resizable">
+    <div class="row" data-type="resizable" data-row="${row}" ${style}>
       <div class="row__info">
-        ${index}
+        ${row}
         ${resizer}
       </div>
       <div class="row__data">${content}</div>
