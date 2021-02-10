@@ -39,7 +39,9 @@ export class Table extends ExcelComponent {
 
     this.$on('formula:input', text => {
       this.selection.current.text(text)
+      this.updateTextInStore(text)
     })
+
     this.$on('formula:done', () => {
       this.selection.current.focus()
     })
@@ -57,6 +59,13 @@ export class Table extends ExcelComponent {
     } catch (err) {
       console.warn('Resize table went wrong:', err)
     }
+  }
+
+  updateTextInStore(value) {
+    this.$dispatch(actions.textChange({
+      id: this.selection.current.id(),
+      value,
+    }))
   }
 
   onMousedown(e) {
@@ -88,6 +97,6 @@ export class Table extends ExcelComponent {
   }
 
   onInput(e) {
-    this.$emit('table:input', $(e.target).text())
+    this.updateTextInStore($(e.target).text())
   }
 }
