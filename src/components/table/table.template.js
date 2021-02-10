@@ -61,6 +61,7 @@ function toCell(row, state) {
     const id = `${row}:${col}`
     const style = getWidthStyle(state.colState, col)
     const data = state.dataState[id]
+
     return `
       <div contenteditable
         class="cell"
