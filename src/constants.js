@@ -4,3 +4,5 @@ export const defaultStyles = {
   textDecoration: 'none solid rgb(0, 0, 0)',
   textAlign: 'start',
 }
+
+export const defaultTitle = 'Новая таблица'

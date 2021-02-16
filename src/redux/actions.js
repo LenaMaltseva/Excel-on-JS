@@ -1,8 +1,21 @@
-import { TABLE_RESIZE, TEXT_CHANGE, CHANGE_STYLES, APPLY_STYLE } from './types'
+import {
+  TABLE_RESIZE,
+  TEXT_CHANGE,
+  CHANGE_STYLES,
+  APPLY_STYLE,
+  TITLE_CHANGE,
+} from './types'
 
 export function tableResize(data) {
   return {
     type: TABLE_RESIZE,
+    data,
+  }
+}
+
+export function titleChange(data) {
+  return {
+    type: TITLE_CHANGE,
     data,
   }
 }

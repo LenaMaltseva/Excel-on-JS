@@ -14,7 +14,11 @@ class Dom {
 
   text(text) {
     if (typeof text === 'string') {
-      this.$el.textContent = text
+      if (this.$el.tagName.toLowerCase() === 'input') {
+        this.$el.value = text
+      } else {
+        this.$el.textContent = text
+      }
       return this
     }
     if (this.$el.tagName.toLowerCase() === 'input') {
@@ -62,6 +66,11 @@ class Dom {
 
   focus() {
     this.$el.focus()
+    return this
+  }
+
+  blur() {
+    this.$el.blur()
     return this
   }
 

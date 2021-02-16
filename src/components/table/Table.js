@@ -54,6 +54,16 @@ export class Table extends ExcelComponent {
         ids: this.selection.selectedIds,
       }))
     })
+
+    this.$on('tableTitle:input', () => {
+      this.selection.current.blur()
+      this.selection.clear()
+    })
+
+    this.$on('tableTitle:done', () => {
+      this.selection.current.focus()
+      this.selection.select(this.selection.current)
+    })
   }
 
   selectCell($cell) {

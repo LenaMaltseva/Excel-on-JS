@@ -1,5 +1,6 @@
 export const TABLE_RESIZE = 'TABLE_RESIZE'
 
+export const TITLE_CHANGE = 'TITLE_CHANGE'
 export const TEXT_CHANGE = 'TEXT_CHANGE'
 
 export const APPLY_STYLE = 'APPLY_STYLE'
