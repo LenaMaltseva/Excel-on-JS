@@ -1,3 +1,5 @@
+import { toInlineStyles } from '~core/utils'
+
 const CHAR_CODES = {
   A: 65,
   Z: 90,
@@ -29,17 +31,17 @@ export function createTable(rowsCount = 10, state = {}) {
 
 function withWidthFrom(state) {
   return function(content, index) {
-    return { content, index, style: getWidthStyle(state, index) }
+    return { content, index, width: getWidthStyle(state, index) }
   }
 }
 
 function getWidthStyle(state, index) {
-  return state[index] ? `style = "width: ${state[index]}px"` : ''
+  return state[index] ? `width: ${state[index]}px;` : ''
 }
 
 function getHeightStyle(state, index) {
   if (!index) return ''
-  return state[index] ? `style = "height: ${state[index]}px"` : ''
+  return state[index] ? `height: ${state[index]}px;` : ''
 }
 
 
@@ -47,9 +49,13 @@ function toChar(_, index) {
   return String.fromCharCode(CHAR_CODES.A + index)
 }
 
-function toColumn({ content, index, style }) {
+function toColumn({ content, index, width }) {
   return `
-    <div class="column" data-type="resizable" data-column="${index}" ${style}>
+    <div class="column"
+      data-type="resizable"
+      data-column="${index}"
+      style="${width}"
+    >
       ${content}
       <div class="column__resize" data-resize="column"></div>
     </div>
@@ -59,7 +65,8 @@ function toColumn({ content, index, style }) {
 function toCell(row, state) {
   return function(_, col) {
     const id = `${row}:${col}`
-    const style = getWidthStyle(state.colState, col)
+    const width = getWidthStyle(state.colState, col)
+    const fontStyles = toInlineStyles(state.stylesState[id])
     const data = state.dataState[id]
 
     return `
@@ -68,7 +75,7 @@ function toCell(row, state) {
         data-type="cell"
         data-column="${col}"
         data-id="${id}"
-        ${style}
+        style="${width}${fontStyles}"
       >
         ${data || ''}
       </div>
@@ -77,13 +84,13 @@ function toCell(row, state) {
 }
 
 function createRow(content, row = '', state = {}) {
-  const style = getHeightStyle(state, row)
+  const height = getHeightStyle(state, row)
   const resizer = row
     ? `<div class="row__resize" data-resize="row"></div>`
     : ''
 
   return `
-    <div class="row" data-type="resizable" data-row="${row}" ${style}>
+    <div class="row" data-type="resizable" data-row="${row}" style="${height}">
       <div class="row__info">
         ${row}
         ${resizer}

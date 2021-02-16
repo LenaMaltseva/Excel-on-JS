@@ -97,6 +97,13 @@ class Dom {
     })
     return this
   }
+
+  getStyles(styles = []) {
+    return styles.reduce((result, style) => {
+      result[style] = getComputedStyle(this.$el)[style]
+      return result
+    }, {})
+  }
 }
 
 export function $(selector) {
