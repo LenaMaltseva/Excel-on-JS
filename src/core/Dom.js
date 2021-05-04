@@ -13,8 +13,12 @@ class Dom {
   }
 
   text(text) {
-    if (typeof text === 'string') {
-      this.$el.textContent = text
+    if (typeof text !== 'undefined') {
+      if (this.$el.tagName.toLowerCase() === 'input') {
+        this.$el.value = text
+      } else {
+        this.$el.textContent = text
+      }
       return this
     }
     if (this.$el.tagName.toLowerCase() === 'input') {
@@ -65,6 +69,11 @@ class Dom {
     return this
   }
 
+  blur() {
+    this.$el.blur()
+    return this
+  }
+
   closest(selector) {
     return $(this.$el.closest(selector))
   }
@@ -91,11 +100,26 @@ class Dom {
     return this
   }
 
+  attr(name, value) {
+    if (value) {
+      this.$el.setAttribute(name, value)
+      return this
+    }
+    return this.$el.getAttribute(name)
+  }
+
   css(styles = {}) {
     Object.keys(styles).forEach(cssName => {
       this.$el.style[cssName] = styles[cssName]
     })
     return this
+  }
+
+  getStyles(styles = []) {
+    return styles.reduce((result, style) => {
+      result[style] = getComputedStyle(this.$el)[style]
+      return result
+    }, {})
   }
 }
 
