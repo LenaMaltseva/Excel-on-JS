@@ -1,3 +1,4 @@
+import { parse } from '~core/parse'
 import { toInlineStyles } from '~core/utils'
 
 const CHAR_CODES = {
@@ -75,9 +76,10 @@ function toCell(row, state) {
         data-type="cell"
         data-column="${col}"
         data-id="${id}"
+        data-value="${data || ''}"
         style="${width}${fontStyles}"
       >
-        ${data || ''}
+        ${parse(data) || ''}
       </div>
     `
   }

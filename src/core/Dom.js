@@ -13,7 +13,7 @@ class Dom {
   }
 
   text(text) {
-    if (typeof text === 'string') {
+    if (typeof text !== 'undefined') {
       if (this.$el.tagName.toLowerCase() === 'input') {
         this.$el.value = text
       } else {
@@ -98,6 +98,14 @@ class Dom {
   removeClass(className) {
     this.$el.classList.remove(className)
     return this
+  }
+
+  attr(name, value) {
+    if (value) {
+      this.$el.setAttribute(name, value)
+      return this
+    }
+    return this.$el.getAttribute(name)
   }
 
   css(styles = {}) {
