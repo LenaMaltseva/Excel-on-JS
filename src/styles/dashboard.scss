@@ -10,6 +10,7 @@
     left: 0;
     z-index: 100;
     height: $db-header-height;
+    background-color: $main-white;
     box-shadow: 0 0 2px 0 $secondary-grey;
     color: $app-color;
   }
@@ -27,12 +28,13 @@
 
   &__create {
     @include flex-centered;
+    flex-direction: column;
     width: 160px;
     height: 160px;
     background-color: $main-white;
     border: 1px solid $border-color;
     border-radius: 4px;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     color: $text-secondary-color;
     text-align: center;
     text-decoration: none;
@@ -43,6 +45,19 @@
       border-color: $app-color;
       color: $text-main-color;
     }
+
+    & .material-icons {
+      margin-bottom: 10px;
+      font-size: 2rem;
+      color: $app-color;
+    }
+  }
+
+  &__empty {
+    margin-left: -1rem;
+    font-size: 1.2rem;
+    color: $text-secondary-color;
+    text-align: center;
   }
 
   &__table {
