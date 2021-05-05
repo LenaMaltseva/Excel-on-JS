@@ -4,6 +4,7 @@ import {
   CHANGE_STYLES,
   APPLY_STYLE,
   TITLE_CHANGE,
+  UPDATE_DATE,
 } from './types'
 
 export function rootReducer(state, action) {
@@ -47,6 +48,12 @@ export function rootReducer(state, action) {
       return {
         ...state,
         tableTitle: action.data,
+      }
+
+    case UPDATE_DATE:
+      return {
+        ...state,
+        openedDate: new Date().toLocaleString('ru'),
       }
 
     default: return state

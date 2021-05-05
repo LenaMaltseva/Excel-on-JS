@@ -5,4 +5,4 @@ export const defaultStyles = {
   textAlign: 'start',
 }
 
-export const defaultTitle = 'Новая таблица'
+export const defaultTitle = 'New spreadsheet'
