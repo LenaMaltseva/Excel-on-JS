@@ -1,7 +1,7 @@
 import { Page } from '~core/Page'
 import { Excel, Formula, Header, Table, Toolbar } from '~/components'
 import { debounce, storage } from '~core/utils'
-import { createStore } from '~core/createStore'
+import { createStore } from '~core/store/createStore'
 import { rootReducer, initialState } from '~/redux'
 
 export class ExcelPage extends Page {
