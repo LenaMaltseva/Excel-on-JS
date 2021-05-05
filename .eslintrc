@@ -10,7 +10,7 @@
     "semi": ["error", "never"],
     "arrow-parens": "off",
     "require-jsdoc": "off",
-    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
     "object-curly-spacing": ["error", "always"],
     "operator-linebreak": "off"
   }
