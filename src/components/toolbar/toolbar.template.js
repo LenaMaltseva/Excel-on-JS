@@ -60,7 +60,7 @@ function toButton(button) {
     <div
       class="button ${isActive ? 'active': ''}"
       data-type="button"
-      data-value="${JSON.stringify(value)}"
+      data-value='${JSON.stringify(value)}'
       title="${title}"
     >
       <i class="material-icons">${icon}</i>

@@ -9,7 +9,8 @@ export class ExcelPage extends Page {
     const excelKey =
       `excel:${this.params ? this.params : Date.now().toString()}`
 
-    const store = createStore(rootReducer, storage(excelKey) || initialState)
+    const store =
+      createStore(rootReducer, storage(excelKey) || { ...initialState })
 
     const stateListener = debounce(state => {
       storage(excelKey, state)
